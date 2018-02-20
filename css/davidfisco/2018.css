@@ -1,0 +1,96 @@
+@supports not (display: grid) {
+    body {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (-ms-high-contrast: active),
+screen and (-ms-high-contrast: none) {
+    body {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+body {
+    text-rendering: optimizeLegibility;
+}
+
+body>main>article,
+body>footer,
+body>header {
+    display: grid;
+    grid-template-columns: [page-end-left frs-start-left] 1fr [between-frs-left] 1fr [frs-end-left gutter-start-left] 10px [gutter-end-left payload-start] minmax(150px, 370px) [payload-middle] minmax(150px, 370px) [payload-end gutter-start-right] 10px [gutter-end-right frs-start-right] 1fr [between-frs-right] 1fr [frs-end-right page-end-right];
+}
+
+body>main>article>header>*,
+body>main>article>*,
+body>footer>*,
+body>header>* {
+    grid-column: payload-start / payload-end;
+}
+
+div[class$="payload-breakout-fisco"] {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.mid-sized-payload-breakout-fisco {
+    grid-column: between-frs-left / between-frs-right;
+}
+
+div.full-sized-payload-breakout-fisco {
+    grid-column: page-end-left / page-end-right;
+}
+
+table.full-sized-payload-breakout-fisco {
+    grid-column: page-end-left / page-end-right;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+div.middle-mid-sized-right-payload-breakout-fisco {
+    grid-column: payload-middle / between-frs-right;
+    justify-content: flex-start;
+}
+
+div.middle-mid-sized-left-payload-breakout-fisco {
+    grid-column: between-frs-left / payload-middle;
+    justify-content: flex-end;
+}
+
+body>main>article blockquote {
+    /*
+    grid-column: gutter-start-left / payload-end;
+    padding-left: 10px;
+    color: #666;
+    border-left: 2px solid black;
+    */
+}
+
+article .draft-fisco {
+    /* grid-column: payload-start / gutter-end-right;
+    padding-right: 10px;
+    border-right: 3px solid #f33; */
+}
+
+article aside {
+    /* color: #666;
+    font-size: .75rem;
+    font-style: oblique;
+    line-height: normal;
+    margin-bottom: 1rem;
+    padding-left: 3rem; */
+}
+
+@media (min-width: 1200px) {
+    body>main>article aside {
+        grid-column: frs-start-right / frs-end-right;
+        margin-bottom: 0;
+        padding-left: 15px;
+        padding-right: 10px;
+    }
+}
