@@ -17,6 +17,8 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+
+/*
 body>main>article,
 body>main>article>section,
 body>footer,
@@ -24,13 +26,30 @@ body>header {
     display: grid;
     grid-template-columns: [page-end-left frs-start-left] 1fr [between-frs-left] 1fr [frs-end-left gutter-start-left] 10px [gutter-end-left payload-start] minmax(150px, 370px) [payload-middle] minmax(150px, 370px) [payload-end gutter-start-right] 10px [gutter-end-right frs-start-right] 1fr [between-frs-right] 1fr [frs-end-right page-end-right];
 }
+*/
 
+body.m-grid-fisco>header,
+body.m-grid-fisco>footer,
+body.m-grid-fisco>main>article>header,
+body.m-grid-fisco>main>article>section.article-body {
+    display: grid;
+    grid-template-columns: [page-end-left frs-start-left] 1fr [between-frs-left] 1fr [frs-end-left gutter-start-left] 10px [gutter-end-left payload-start] minmax(150px, 370px) [payload-middle] minmax(150px, 370px) [payload-end gutter-start-right] 10px [gutter-end-right frs-start-right] 1fr [between-frs-right] 1fr [frs-end-right page-end-right];
+}
+
+
+/* body>main>article>*,
 body>main>article>header>*,
-body>main>article>*,
 body>main>article>section>*,
 body>footer>*,
 body>header>* {
     grid-column: payload-start / payload-end;
+} */
+
+body.m-grid-fisco>header>*,
+body.m-grid-fisco>footer>*,
+body.m-grid-fisco>main>article>header>*,
+body.m-grid-fisco>main>article>section.article-body>* {
+    grid-column: payload;
 }
 
 div[class$="payload-breakout-fisco"] {
@@ -41,55 +60,61 @@ div[class$="payload-breakout-fisco"] {
 }
 
 .mid-sized-payload-breakout-fisco {
-    grid-column: between-frs-left / between-frs-right;
+    grid-column: between-frs-left / between-frs-right !important;
 }
 
 div.full-sized-payload-breakout-fisco {
-    grid-column: page-end-left / page-end-right;
+    grid-column: page-end-left / page-end-right !important;
 }
 
 table.full-sized-payload-breakout-fisco {
-    grid-column: page-end-left / page-end-right;
+    grid-column: page-end-left / page-end-right !important;
     padding-left: 2rem;
     padding-right: 2rem;
 }
 
 div.middle-mid-sized-right-payload-breakout-fisco {
-    grid-column: payload-middle / between-frs-right;
+    grid-column: payload-middle / between-frs-right !important;
     justify-content: flex-start;
 }
 
 div.middle-mid-sized-left-payload-breakout-fisco {
-    grid-column: between-frs-left / payload-middle;
+    grid-column: between-frs-left / payload-middle !important;
     justify-content: flex-end;
 }
 
-body>main>article blockquote {
-    /*
+body.m-grid-fisco>main>article>section.article-body>blockquote {
     grid-column: gutter-start-left / payload-end;
     padding-left: 10px;
     color: #666;
     border-left: 2px solid black;
-    */
 }
 
-article .draft-fisco {
-    /* grid-column: payload-start / gutter-end-right;
+body.m-grid-fisco>main>article>section.article-body>.draft-fisco {
+    grid-column: payload-start / gutter-end-right;
     padding-right: 10px;
-    border-right: 3px solid #f33; */
+    border-right: 3px solid #f33;
 }
 
-article aside {
-    /* color: #666;
+body.m-grid-fisco>main>article>section.article-body>aside {
+    color: #666;
     font-size: .75rem;
     font-style: oblique;
     line-height: normal;
     margin-bottom: 1rem;
-    padding-left: 3rem; */
+    padding-left: 3rem;
+}
+
+
+/* Correct something that should be in Semantic UI, but for some reason isn't. */
+
+img.ui.fisco.img {
+    max-width: 100%;
+    height: auto;
 }
 
 @media (min-width: 1200px) {
-    body>main>article aside {
+    body.m-grid-fisco>main>article>section.article-body>aside {
         grid-column: frs-start-right / frs-end-right;
         margin-bottom: 0;
         padding-left: 15px;
