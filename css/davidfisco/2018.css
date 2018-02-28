@@ -105,6 +105,10 @@ body.m-grid-fisco>main>article>section.article-body>aside {
     padding-left: 3rem;
 }
 
+.website-right-margin-for-right-aligned-content-fisco {
+    margin-right: 1.5rem !important;
+}
+
 
 /* Correct something that should be in Semantic UI, but for some reason isn't. */
 
