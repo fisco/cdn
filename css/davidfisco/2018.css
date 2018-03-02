@@ -48,7 +48,8 @@ body>header>* {
 body.m-grid-fisco>header>*,
 body.m-grid-fisco>footer>*,
 body.m-grid-fisco>main>article>header>*,
-body.m-grid-fisco>main>article>section.article-body>* {
+body.m-grid-fisco>main>article>section.article-body>*,
+body.m-grid-fisco>main>article>section.article-footer>* {
     grid-column: payload;
 }
 
