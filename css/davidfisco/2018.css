@@ -31,7 +31,8 @@ body>header {
 body.m-grid-fisco>header,
 body.m-grid-fisco>footer,
 body.m-grid-fisco>main>article>header,
-body.m-grid-fisco>main>article>section.article-body {
+body.m-grid-fisco>main>article>section.article-body,
+body.m-grid-fisco>main>article>section.article-footer {
     display: grid;
     grid-template-columns: [page-end-left frs-start-left] 1fr [between-frs-left] 1fr [frs-end-left gutter-start-left] 10px [gutter-end-left payload-start] minmax(150px, 370px) [payload-middle] minmax(150px, 370px) [payload-end gutter-start-right] 10px [gutter-end-right frs-start-right] 1fr [between-frs-right] 1fr [frs-end-right page-end-right];
 }
