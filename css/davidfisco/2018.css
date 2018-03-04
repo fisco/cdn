@@ -113,7 +113,6 @@ body.m-grid-fisco>main>article>section.article-body>aside {
 
 
 /* Correct something that should be in Semantic UI, but for some reason isn't. */
-
 img.ui.fisco.img {
     max-width: 100%;
     height: auto;
