@@ -1,10 +1,19 @@
+:root {
+    --twitter-blue: #4099FF;
+}
+
+.optimize-legibility-fisco {
+    text-rendering: optimizeLegibility;
+}
+
+
+/* THE GRID LAYOUT */
 @supports not (display: grid) {
     body {
         margin-left: 1rem;
         margin-right: 1rem;
     }
 }
-
 @media screen and (-ms-high-contrast: active),
 screen and (-ms-high-contrast: none) {
     body {
@@ -12,93 +21,60 @@ screen and (-ms-high-contrast: none) {
         margin-right: 1rem;
     }
 }
-
-body {
-    text-rendering: optimizeLegibility;
-}
-
-
-/*
-body>main>article,
-body>main>article>section,
-body>footer,
-body>header {
-    display: grid;
-    grid-template-columns: [page-end-left frs-start-left] 1fr [between-frs-left] 1fr [frs-end-left gutter-start-left] 10px [gutter-end-left payload-start] minmax(150px, 370px) [payload-middle] minmax(150px, 370px) [payload-end gutter-start-right] 10px [gutter-end-right frs-start-right] 1fr [between-frs-right] 1fr [frs-end-right page-end-right];
-}
-*/
-
 body.m-grid-fisco>header,
 body.m-grid-fisco>footer,
 body.m-grid-fisco>main>article>header,
-body.m-grid-fisco>main>article>section.article-body,
-body.m-grid-fisco>main>article>section.article-footer {
+body.m-grid-fisco>main>article>section,
+body.m-grid-fisco>main>article>footer {
     display: grid;
-    grid-template-columns: [page-end-left frs-start-left] 1fr [between-frs-left] 1fr [frs-end-left gutter-start-left] 10px [gutter-end-left payload-start] minmax(150px, 370px) [payload-middle] minmax(150px, 370px) [payload-end gutter-start-right] 10px [gutter-end-right frs-start-right] 1fr [between-frs-right] 1fr [frs-end-right page-end-right];
+    grid-template-columns: [whole-page-start left-whitespace-start] 1fr 
+                           [one-fr-margin-start] 1fr 
+                           [payload-left-gutter-start left-whitespace-end] 10px
+                           [payload-left-gutter-end payload-start] minmax(150px, 370px)
+                           [payload-middle] minmax(150px, 370px) 
+                           [payload-end payload-right-gutter-start] 10px 
+                           [payload-right-gutter-end right-whitespace-start] 1fr
+                           [one-fr-margin-end] 1fr 
+                           [right-whitespace-end whole-page-end];
 }
-
-
-/* body>main>article>*,
-body>main>article>header>*,
-body>main>article>section>*,
-body>footer>*,
-body>header>* {
-    grid-column: payload-start / payload-end;
-} */
-
 body.m-grid-fisco>header>*,
 body.m-grid-fisco>footer>*,
 body.m-grid-fisco>main>article>header>*,
-body.m-grid-fisco>main>article>section.article-body>*,
-body.m-grid-fisco>main>article>section.article-footer>* {
+body.m-grid-fisco>main>article>section>*,
+body.m-grid-fisco>main>article>footer>* {
     grid-column: payload;
 }
-
 div[class$="payload-breakout-fisco"] {
     align-items: center;
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
-
 .mid-sized-payload-breakout-fisco {
-    grid-column: between-frs-left / between-frs-right !important;
+    grid-column: one-fr-margin !important;
 }
-
 div.full-sized-payload-breakout-fisco {
-    grid-column: page-end-left / page-end-right !important;
+    grid-column: whole-page !important;
 }
-
 table.full-sized-payload-breakout-fisco {
-    grid-column: page-end-left / page-end-right !important;
+    grid-column: whole-page !important;
     padding-left: 2rem;
     padding-right: 2rem;
 }
-
 div.middle-mid-sized-right-payload-breakout-fisco {
-    grid-column: payload-middle / between-frs-right !important;
+    grid-column: payload-middle / one-fr-margin-end !important;
     justify-content: flex-start;
 }
-
 div.middle-mid-sized-left-payload-breakout-fisco {
-    grid-column: between-frs-left / payload-middle !important;
+    grid-column: one-fr-margin-start / payload-middle !important;
     justify-content: flex-end;
 }
-
-body.m-grid-fisco>main>article>section.article-body>blockquote {
-    grid-column: gutter-start-left / payload-end;
-    padding-left: 10px;
-    color: #666;
-    border-left: 2px solid black;
-}
-
-body.m-grid-fisco>main>article>section.article-body>.draft-fisco {
-    grid-column: payload-start / gutter-end-right;
+body.m-grid-fisco>main>article>section>.draft-fisco {
+    grid-column: payload-start / payload-right-gutter-end;
     padding-right: 10px;
     border-right: 3px solid #f33;
 }
-
-body.m-grid-fisco>main>article>section.article-body>aside {
+body.m-grid-fisco>main>article>section>aside {
     color: #666;
     font-size: .75rem;
     font-style: oblique;
@@ -106,23 +82,29 @@ body.m-grid-fisco>main>article>section.article-body>aside {
     margin-bottom: 1rem;
     padding-left: 3rem;
 }
-
-.website-right-margin-for-right-aligned-content-fisco {
-    margin-right: 1.5rem !important;
-}
-
-
-/* Correct something that should be in Semantic UI, but for some reason isn't. */
-img.ui.fisco.img {
-    max-width: 100%;
-    height: auto;
-}
-
 @media (min-width: 1200px) {
-    body.m-grid-fisco>main>article>section.article-body>aside {
-        grid-column: frs-start-right / frs-end-right;
+    body.m-grid-fisco>main>article>section>aside {
+        grid-column: right-whitespace;
         margin-bottom: 0;
         padding-left: 15px;
         padding-right: 10px;
     }
 }
+/* Correct something that should be in Semantic UI, but for some reason isn't and is necessary for responsive images in my grid design. */
+img.ui.fisco.img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* .website-right-margin-for-right-aligned-content-fisco {
+    margin-right: 1.5rem !important;
+} */
+
+/* For embedded Google Docs, from old site. */
+iframe.googleDoc {
+    height: 65vh;
+    width: 100%;
+}
+
+
+
