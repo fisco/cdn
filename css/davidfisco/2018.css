@@ -6,6 +6,10 @@
     text-rendering: optimizeLegibility;
 }
 
+* {
+    font-display: swap;
+}
+
 
 /* THE GRID LAYOUT */
 @supports not (display: grid) {
